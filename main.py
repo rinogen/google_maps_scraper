@@ -1,6 +1,3 @@
-"""This script serves as an example on how to use Python 
-   & Playwright to scrape/extract data from Google Maps"""
-
 from playwright.sync_api import sync_playwright
 from dataclasses import dataclass, asdict, field
 import pandas as pd
@@ -51,18 +48,7 @@ class BusinessList:
             os.makedirs(self.save_at)
         self.dataframe().to_excel(f"output/{filename}.xlsx", index=False)
 
-    # def save_to_csv(self, filename):
-    #     """saves pandas dataframe to csv file
-
-    #     Args:
-    #         filename (str): filename
-    #     """
-
-    #     if not os.path.exists(self.save_at):
-    #         os.makedirs(self.save_at)
-    #     self.dataframe().to_csv(f"output/{filename}.csv", index=False)
-
-def extract_coordinates_from_url(url: str) -> tuple[float,float]:
+def extract_coordinates_from_url(url: str) -> tuple[float, float]:
     """helper function to extract coordinates from url"""
     
     coordinates = url.split('/@')[-1].split('/')[0]
@@ -111,7 +97,7 @@ def main():
     # scraping
     ###########
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
         page.goto("https://www.google.com/maps", timeout=60000)
@@ -190,6 +176,10 @@ def main():
 
                     business = Business()
 
+                    # Wait until the address and phone number are visible
+                    page.wait_for_selector(address_xpath, timeout=10000)
+                    page.wait_for_selector(phone_number_xpath, timeout=10000)
+
                     if listing.locator(name_xpath).count() > 0:
                         business.name = listing.locator(name_xpath).all()[0].inner_text()
                     else:
@@ -218,7 +208,7 @@ def main():
                             listing.locator(reviews_span_xpath).all()[0]
                             .get_attribute("aria-label")
                             .split()[2]
-                            .replace(',','')
+                            .replace(',', '')
                             .strip()
                         )
                     else:
