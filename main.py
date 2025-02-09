@@ -7,6 +7,7 @@ import pandas as pd
 import argparse
 import os
 import sys
+from typing import List
 
 @dataclass
 class Business:
