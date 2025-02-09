@@ -20,6 +20,7 @@ class Business:
     reviews_average: float = None
     latitude: float = None
     longitude: float = None
+    url: str = None
 
 
 @dataclass
@@ -50,16 +51,16 @@ class BusinessList:
             os.makedirs(self.save_at)
         self.dataframe().to_excel(f"output/{filename}.xlsx", index=False)
 
-    def save_to_csv(self, filename):
-        """saves pandas dataframe to csv file
+    # def save_to_csv(self, filename):
+    #     """saves pandas dataframe to csv file
 
-        Args:
-            filename (str): filename
-        """
+    #     Args:
+    #         filename (str): filename
+    #     """
 
-        if not os.path.exists(self.save_at):
-            os.makedirs(self.save_at)
-        self.dataframe().to_csv(f"output/{filename}.csv", index=False)
+    #     if not os.path.exists(self.save_at):
+    #         os.makedirs(self.save_at)
+    #     self.dataframe().to_csv(f"output/{filename}.csv", index=False)
 
 def extract_coordinates_from_url(url: str) -> tuple[float,float]:
     """helper function to extract coordinates from url"""
@@ -100,7 +101,7 @@ def main():
         # Open the file in read mode
             with open(input_file_path, 'r') as file:
             # Read all lines into a list
-                search_list = file.readlines()
+                search_list = [line.strip() for line in file.readlines()]
                 
         if len(search_list) == 0:
             print('Error occured: You must either pass the -s search argument, or add searches to input.txt')
@@ -110,7 +111,7 @@ def main():
     # scraping
     ###########
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
         page.goto("https://www.google.com/maps", timeout=60000)
@@ -181,19 +182,16 @@ def main():
                     listing.click()
                     page.wait_for_timeout(5000)
 
-                    name_attibute = 'aria-label'
+                    name_xpath = '//div[contains(@class, "fontHeadlineSmall")]'
                     address_xpath = '//button[@data-item-id="address"]//div[contains(@class, "fontBodyMedium")]'
                     website_xpath = '//a[@data-item-id="authority"]//div[contains(@class, "fontBodyMedium")]'
                     phone_number_xpath = '//button[contains(@data-item-id, "phone:tel:")]//div[contains(@class, "fontBodyMedium")]'
-                    review_count_xpath = '//button[@jsaction="pane.reviewChart.moreReviews"]//span'
-                    reviews_average_xpath = '//div[@jsaction="pane.reviewChart.moreReviews"]//div[@role="img"]'
-                    
-                    
+                    reviews_span_xpath = '//span[@role="img"]'
+
                     business = Business()
-                   
-                    if len(listing.get_attribute(name_attibute)) >= 1:
-        
-                        business.name = listing.get_attribute(name_attibute)
+
+                    if listing.locator(name_xpath).count() > 0:
+                        business.name = listing.locator(name_xpath).all()[0].inner_text()
                     else:
                         business.name = ""
                     if page.locator(address_xpath).count() > 0:
@@ -208,27 +206,27 @@ def main():
                         business.phone_number = page.locator(phone_number_xpath).all()[0].inner_text()
                     else:
                         business.phone_number = ""
-                    if page.locator(review_count_xpath).count() > 0:
-                        business.reviews_count = int(
-                            page.locator(review_count_xpath).inner_text()
+                    if listing.locator(reviews_span_xpath).count() > 0:
+                        business.reviews_average = float(
+                            listing.locator(reviews_span_xpath).all()[0]
+                            .get_attribute("aria-label")
                             .split()[0]
+                            .replace(",", ".")
+                            .strip()
+                        )
+                        business.reviews_count = int(
+                            listing.locator(reviews_span_xpath).all()[0]
+                            .get_attribute("aria-label")
+                            .split()[2]
                             .replace(',','')
                             .strip()
                         )
                     else:
-                        business.reviews_count = ""
-                        
-                    if page.locator(reviews_average_xpath).count() > 0:
-                        business.reviews_average = float(
-                            page.locator(reviews_average_xpath).get_attribute(name_attibute)
-                            .split()[0]
-                            .replace(',','.')
-                            .strip())
-                    else:
                         business.reviews_average = ""
-                    
+                        business.reviews_count = ""
                     
                     business.latitude, business.longitude = extract_coordinates_from_url(page.url)
+                    business.url = page.url
 
                     business_list.business_list.append(business)
                 except Exception as e:
@@ -238,7 +236,6 @@ def main():
             # output
             #########
             business_list.save_to_excel(f"google_maps_data_{search_for}".replace(' ', '_'))
-            business_list.save_to_csv(f"google_maps_data_{search_for}".replace(' ', '_'))
 
         browser.close()
 
