@@ -8,6 +8,7 @@ import argparse
 import os
 import sys
 from typing import List
+from typing import Tuple
 
 @dataclass
 class Business:
@@ -63,7 +64,7 @@ class BusinessList:
     #         os.makedirs(self.save_at)
     #     self.dataframe().to_csv(f"output/{filename}.csv", index=False)
 
-def extract_coordinates_from_url(url: str) -> tuple[float,float]:
+def extract_coordinates_from_url(url: str) -> Tuple[float,float]:
     """helper function to extract coordinates from url"""
     
     coordinates = url.split('/@')[-1].split('/')[0]
