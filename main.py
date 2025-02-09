@@ -28,7 +28,7 @@ class BusinessList:
     """holds list of Business objects,
     and save to both excel and csv
     """
-    business_list: list[Business] = field(default_factory=list)
+    business_list: List[Business] = field(default_factory=list)
     save_at = 'output'
 
     def dataframe(self):
