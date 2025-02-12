@@ -128,6 +128,7 @@ def main():
             page.wait_for_timeout(5000)
 
             # scrolling
+            page.wait_for_selector('//a[contains(@href, "https://www.google.com/maps/place")]', timeout=60000)
             page.hover('//a[contains(@href, "https://www.google.com/maps/place")]')
 
             # this variable is used to detect if the bot
