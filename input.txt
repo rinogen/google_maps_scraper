@@ -1,20 +1,12 @@
-Snack Kasihan Bangunjiwo
-Snack Kasihan Ngestiharjo
-Snack Kasihan Tirtonirmolo
-Snack Kasihan Tamantirto
-Snack Sedayu Argodadi
-Snack Sedayu Argorejo
-Snack Sedayu Argosari
-Snack Sedayu Argomulyo
-Snack Pajangan Guwosari
-Snack Pajangan Sendangsari
-Snack Pajangan Triwidadi
-Snack Sewon Bangunharjo
-Snack Sewon Panggungharjo
-Snack Sewon Pendowoharjo
-Snack Sewon Timbulharjo
-Snack Bantul
-Snack Bantul Palbapang
-Snack Bantul Ringinharjo
-Snack Bantul Sabdodadi
-Snack Bantul Trirenggo
+Warung Madura Pajangan Guwosari
+Warung Madura Pajangan Sendangsari
+Warung Madura Pajangan Triwidadi
+Warung Madura Sewon Bangunharjo
+Warung Madura Sewon Panggungharjo
+Warung Madura Sewon Pendowoharjo
+Warung Madura Sewon Timbulharjo
+Warung Madura Bantul
+Warung Madura Bantul Palbapang
+Warung Madura Bantul Ringinharjo
+Warung Madura Bantul Sabdodadi
+Warung Madura Bantul Trirenggo
