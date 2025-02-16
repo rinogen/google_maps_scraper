@@ -1,20 +1,20 @@
-Warung Madura Kasihan Bangunjiwo
-Warung Madura Kasihan Ngestiharjo
-Warung Madura Kasihan Tirtonirmolo
-Warung Madura Kasihan Tamantirto
-Warung Madura Sedayu Argodadi
-Warung Madura Sedayu Argorejo
-Warung Madura Sedayu Argosari
-Warung Madura Sedayu Argomulyo
-Warung Madura Pajangan Guwosari
-Warung Madura Pajangan Sendangsari
-Warung Madura Pajangan Triwidadi
-Warung Madura Sewon Bangunharjo
-Warung Madura Sewon Panggungharjo
-Warung Madura Sewon Pendowoharjo
-Warung Madura Sewon Timbulharjo
-Warung Madura Bantul
-Warung Madura Bantul Palbapang
-Warung Madura Bantul Ringinharjo
-Warung Madura Bantul Sabdodadi
-Warung Madura Bantul Trirenggo
+Sembako Kasihan Bangunjiwo
+Sembako Kasihan Ngestiharjo
+Sembako Kasihan Tirtonirmolo
+Sembako Kasihan Tamantirto
+Sembako Sedayu Argodadi
+Sembako Sedayu Argorejo
+Sembako Sedayu Argosari
+Sembako Sedayu Argomulyo
+Sembako Pajangan Guwosari
+Sembako Pajangan Sendangsari
+Sembako Pajangan Triwidadi
+Sembako Sewon Bangunharjo
+Sembako Sewon Panggungharjo
+Sembako Sewon Pendowoharjo
+Sembako Sewon Timbulharjo
+Sembako Bantul
+Sembako Bantul Palbapang
+Sembako Bantul Ringinharjo
+Sembako Bantul Sabdodadi
+Sembako Bantul Trirenggo
