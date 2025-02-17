@@ -1,12 +1,27 @@
-Warung Madura Pajangan Guwosari
-Warung Madura Pajangan Sendangsari
-Warung Madura Pajangan Triwidadi
-Warung Madura Sewon Bangunharjo
-Warung Madura Sewon Panggungharjo
-Warung Madura Sewon Pendowoharjo
-Warung Madura Sewon Timbulharjo
-Warung Madura Bantul
-Warung Madura Bantul Palbapang
-Warung Madura Bantul Ringinharjo
-Warung Madura Bantul Sabdodadi
-Warung Madura Bantul Trirenggo
+Camilan Moyudan Sumberagung
+Camilan Moyudan Sumberarum
+Camilan Moyudan Sumberrahayu
+Camilan Moyudan Sumbersari
+Camilan Godean Sidoagung
+Camilan Godean Sidomulyo
+Camilan Godean Sidokarto
+Camilan Godean Sidomoyo
+Camilan Godean Sidoluhur
+Camilan Godean Sidorejo
+Camilan Gamping Ambarketawang
+Camilan Gamping Balecatur
+Camilan Gamping Banyuraden
+Camilan Gamping Nogotirto
+Camilan Gamping Trihanggo
+Camilan Mlati Sendangadi
+Camilan Mlati Sinduadi
+Camilan Mlati Sumberadi
+Camilan Mlati Tirtoadi
+Camilan Mlati Tlogoadi
+Camilan Depok Caturtunggal
+Camilan Depok Condongcatur
+Camilan Depok Maguwoharjo
+Camilan Berbah Jogotirto
+Camilan Berbah Kalitirto
+Camilan Berbah Sendangtirto
+Camilan Berbah Tegaltirto
